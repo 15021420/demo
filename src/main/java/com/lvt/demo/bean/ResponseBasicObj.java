@@ -22,6 +22,10 @@ public class ResponseBasicObj implements Serializable {
         this.data = data;
     }
 
+    public ResponseBasicObj(String code, String message) {
+        this.meta = new Meta(code, message);
+    }
+
     public Meta getMeta() {
         return meta;
     }

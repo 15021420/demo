@@ -2,9 +2,12 @@ package com.lvt.demo.rest;
 
 import com.lvt.demo.bean.ResponseBasicObj;
 import com.lvt.demo.dto.SampleObjectResponseDTO;
+import com.lvt.demo.exception.CustomApplicationException;
 import com.lvt.demo.exception.ErrorCode;
 import com.lvt.demo.model.Employee;
 import com.lvt.demo.service.EmployeeService;
+import com.lvt.demo.service.SampleService;
+import com.lvt.demo.utils.ApplicationConstants;
 import com.lvt.demo.vm.UserVM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,12 +16,12 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
-@RequestMapping("/")
+@RequestMapping(ApplicationConstants.APPLICATION_API.API_PREFIX + ApplicationConstants.APPLICATION_API.MODULE.BASE_CONTROLLER)
 @RestController
 public class BaseController {
 
     @Autowired
-    private EmployeeService employeeService;
+    private SampleService sampleService;
 
     @GetMapping
     public String defaultPage() throws Exception{
@@ -48,12 +51,16 @@ public class BaseController {
                 "}";
     }
 
-    @PostMapping
-    public List<SampleObjectResponseDTO> userPage(@RequestBody  UserVM userVM) {
-        List<SampleObjectResponseDTO> sampleDto = new ArrayList<>();
-        sampleDto.add(new SampleObjectResponseDTO("1", "ok", "Cuong"));
-        sampleDto.add(new SampleObjectResponseDTO("2", "ooooo", "Thang"));
-        sampleDto.add(new SampleObjectResponseDTO("3", "ooođaoo", "Thanaddg"));
-        return sampleDto;
+    @PostMapping("/data-success")
+    public List<SampleObjectResponseDTO> getListSampleDataSuccess(@RequestBody  UserVM userVM) {
+
+        return sampleService.getListSampleDataSuccess();
     }
+
+    @PostMapping("/data-fail")
+    public List<SampleObjectResponseDTO> getListSampleDataFail(@RequestBody UserVM userVM) throws CustomApplicationException {
+
+        return sampleService.getListSampleDataFail();
+    }
+
 }

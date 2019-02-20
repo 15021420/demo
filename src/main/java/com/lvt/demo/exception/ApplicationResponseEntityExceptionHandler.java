@@ -25,7 +25,7 @@ public class ApplicationResponseEntityExceptionHandler extends ResponseEntityExc
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         ResponseBasicObj responseBasicObj =
                 new ResponseBasicObj(messageService.getCode(ErrorCode.BAD_REQUEST),
-                        messageService.getMessage(ErrorCode.BAD_REQUEST), null);
+                        messageService.getMessage(ErrorCode.BAD_REQUEST));
         ex.getBindingResult().getFieldErrors().stream().forEach(f -> {
             String msgCode = f.getDefaultMessage();
             String code = messageService.getCode(msgCode);
@@ -42,8 +42,18 @@ public class ApplicationResponseEntityExceptionHandler extends ResponseEntityExc
     public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) {
         ResponseBasicObj responseBasicObj =
                 new ResponseBasicObj( messageService.getCode(ErrorCode.SYSTEM_ERROR),
-                        messageService.getMessage(ErrorCode.SYSTEM_ERROR), null);
-        System.out.println(ex.getMessage());
+                        messageService.getMessage(ErrorCode.SYSTEM_ERROR));
+
+        return new ResponseEntity(responseBasicObj, HttpStatus.BAD_REQUEST);
+    }
+
+    @SuppressWarnings("unchecked")
+    @ExceptionHandler(CustomApplicationException.class)
+    public final ResponseEntity<Object> handleAgencyException(CustomApplicationException ex, WebRequest request) {
+        ResponseBasicObj responseBasicObj = null;
+
+        responseBasicObj = new ResponseBasicObj(messageService.getCode(ex.getCode()),
+                messageService.getMessage(ex.getCode()));
 
         return new ResponseEntity(responseBasicObj, HttpStatus.BAD_REQUEST);
     }

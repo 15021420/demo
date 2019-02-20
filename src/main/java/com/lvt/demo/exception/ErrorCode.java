@@ -6,4 +6,5 @@ public class ErrorCode {
     public static final String SYSTEM_ERROR = "error.system";
     public static final String BIRTH_DAY_NOT_VALID = "error.birth_day";
     public static final String NAME_NOT_VALID = "error.name";
+    public static final String CAN_NOT_GET_DATA_SAMPLE = "error.get_data_sample";
 }
