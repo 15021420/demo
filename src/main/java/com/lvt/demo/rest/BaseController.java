@@ -53,6 +53,7 @@ public class BaseController {
         List<SampleObjectResponseDTO> sampleDto = new ArrayList<>();
         sampleDto.add(new SampleObjectResponseDTO("1", "ok", "Cuong"));
         sampleDto.add(new SampleObjectResponseDTO("2", "ooooo", "Thang"));
+        sampleDto.add(new SampleObjectResponseDTO("3", "ooođaoo", "Thanaddg"));
         return sampleDto;
     }
 }
