@@ -3,6 +3,7 @@ package com.lvt.demo.bean;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lvt.demo.exception.Errors;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -62,6 +63,16 @@ public class ResponseBasicObj implements Serializable {
         return this.meta.getErrors();
     }
 
+    public boolean checkExistsMessageError(String message) {
+        if (null == this.meta.getErrors())
+            return false;
+        boolean isExists = false;
+        for (Errors err : this.meta.getErrors()) {
+            if(StringUtils.equals(message, err.getMessage()))
+                isExists = true;
+        }
+        return isExists;
+    }
 
     class Meta {
 

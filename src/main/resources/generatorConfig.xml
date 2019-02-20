@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="context1">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection
+                connectionURL="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=tcp)(HOST=10.120.109.16)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=ewallet)))"
+                driverClass="oracle.jdbc.OracleDriver" password="1233xx)*21"
+                userId="operation" />
+        <javaModelGenerator
+                targetPackage="com.lvt.demo.model" targetProject="demo" />
+        <sqlMapGenerator
+                targetPackage="com.lvt.demo.mapper"
+                targetProject="demo/src/main/resources" />
+        <javaClientGenerator
+                targetPackage="com.lvt.demo.mapper" targetProject="demo"
+                type="XMLMAPPER" />
+
+        <table schema="operation" tableName="RISK_LEVEL">
+            <property name="runtimeTableName"
+                      value="RISK_LEVEL" />
+        </table>
+
+    </context>
+</generatorConfiguration>
