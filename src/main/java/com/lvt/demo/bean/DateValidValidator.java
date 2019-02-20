@@ -17,7 +17,7 @@ public class DateValidValidator implements ConstraintValidator<DateValid, String
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        System.out.println(value);
+
         if (null == value) {
             return true;
         }

@@ -1,0 +1,8 @@
+ ,---.     ,--.                           
+'   .-'  ,-'  '-.  ,---.  ,--.--.  ,---.  
+`.  `-.  '-.  .-' | .-. | |  .--' | .-. : 
+.-'    |   |  |   ' '-' ' |  |    \   --. 
+`-----'    `--'    `---'  `--'     `----'
+
+${AnsiColor.BRIGHT_BLUE}:: Thang, Le Viet 🤓  :: Running Spring Boot ${spring-boot.version} ::
+:: Copyright by Pivotal ::${AnsiColor.DEFAULT}
